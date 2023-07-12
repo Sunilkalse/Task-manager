@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+<body>
+   
+    <form action="/task/" method="post" class="delete">
+        <h1>TASK MANAGER</h1>
+        <label for="task">TASK</label>
+        <input type="text" name="task" id="task">
+        <button type="submit" id="createTask">create task</button>
+
+    </form>
+    <table > 
+        <tr>
+            <th>Task</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+
+        <%tasks.forEach((task)=>{%>
+             <tr>
+                <td>
+                   <button> <%=task.task%></button>
+                </td>
+                <td><a href="/task/<%=task._id%>"><button type="submit" id="update">Edit</button></a> </td>
+                <td>
+                    <form action="/task/<%=task._id%>?_method=DELETE" method="post" >
+                        <button type="submit" id="delete">Trash</button>
+                    </form>
+                </td>
+            </tr>
+        <%})%>
+    </table>
+</body>
+</html>
